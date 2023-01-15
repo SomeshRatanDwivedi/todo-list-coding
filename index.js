@@ -19,7 +19,7 @@ function addTaskToDom(task) {
 
 function renderList() {
   taskList.innerHTML = "";
-  taskElement = JSON.parse(localStorage.getItem("todos"));
+  taskElement = JSON.parse(localStorage.getItem("todos")) || [];
   console.log(taskElement);
   for (let i = 0; i < taskElement.length; i++) {
     addTaskToDom(taskElement[i]);
@@ -119,8 +119,10 @@ function handleClickListener(e) {
 }
 
 function initializeApp() {
+  renderList();
   addTaskInput.addEventListener("keyup", handleInputKeyPress);
   document.addEventListener("click", handleClickListener);
+
 }
 
 initializeApp();
